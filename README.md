@@ -20,6 +20,7 @@
 | 1    | 電池組(供電3~6V)             |
 | 1    | MPU-6050                     |
 
+# 當前進度
 
 
 [MPU-6050 Library]: https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050
