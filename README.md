@@ -21,7 +21,7 @@
 | 1    | MPU-6050                     |
 
 # 當前進度
-![image](https://raw.githubusercontent.com/MinecraftDawn/SelfBalanceCar/master/images/%E7%B7%9A%E8%B7%AF%E5%9C%96.jpg =600*800)
+![image](https://raw.githubusercontent.com/MinecraftDawn/SelfBalanceCar/master/images/%E7%B7%9A%E8%B7%AF%E5%9C%96.jpg =600x800)
 
 [MPU-6050 Library]: https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050
 [Arduino IDE]: https://www.arduino.cc/en/Main/Software
