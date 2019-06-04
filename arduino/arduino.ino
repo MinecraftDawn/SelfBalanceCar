@@ -56,9 +56,9 @@ void setup() {
 
   // wait for ready
   Serial.println(F("\nSend any character to begin DMP programming and demo: "));
-  while (Serial.available() && Serial.read()); // empty buffer
-  while (!Serial.available());                 // wait for data
-  while (Serial.available() && Serial.read()); // empty buffer again
+  //while (Serial.available() && Serial.read()); // empty buffer
+  //while (!Serial.available());                 // wait for data
+  //while (Serial.available() && Serial.read()); // empty buffer again
 
   // load and configure the DMP
   Serial.println(F("Initializing DMP..."));
@@ -149,16 +149,44 @@ void loop() {
     Serial.print(ypr[0] * 180/M_PI);
     Serial.print("\t");
     y = ypr[1] * 180/M_PI;
+    y -= 0 ; // 修正誤差 
     Serial.print(y);
     Serial.print("\t");
     Serial.println(ypr[2] * 180/M_PI);
   }
-
-  if(y < 0){ //小於0，反之要往前走
+  
+  if(y > 0){ // 大於0，反之要往前走
     digitalWrite(Dir,HIGH);
-    analogWrite(Pwm, 200);
-  }else{ //不小於0，反之要往後走
+
+    int power = 0,absY = abs(y);
+  
+    if(absY < 0.5){
+      power = 0;
+    }else if(absY < 1){
+      power = 140;
+    }else if(absY < 2){
+      power = 180;
+    }else if(absY < 2.5){
+      power = 220;
+    }else{
+      power = 250;
+    }
+    analogWrite(Pwm, power);
+  }else{ // 不大於0，反之要往後走
     digitalWrite(Dir,LOW);
-    analogWrite(Pwm, 200);
+
+    int power = 0,absY = abs(y);
+  
+    if(absY < 0.5){
+      power = 0;
+    }else if(absY < 3){
+      power = 140;
+    }else if(absY < 4){
+      power = 200;
+    }else{
+      power = 255;
+    }
+    analogWrite(Pwm, power);
   }
+
 }
